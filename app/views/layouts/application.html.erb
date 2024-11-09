@@ -13,39 +13,59 @@
 
   <body>
   <header>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to 'Bookers', root_path %>
-      </li>
-      <li>
-        <%= link_to 'Home', user_path(current_user.id) %>
-      </li>
-      <li>
-        <%= link_to 'Users', users_path %>
-      </li>
-      <li>
-        <%= link_to 'Books', books_path  %>
-      </li>
-      <li>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to 'Bookers', root_path %>
-      </li>
-      <li>
-        <%= link_to "Home", root_path %>
-      </li>
-      <li>
-        <%= link_to "About", about_path %>
-      </li>
-      <li>
-        <%= link_to "Sign up", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "Log in", new_user_session_path %>
-      </li>
-    <% end %>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+          <!-- Brand/Logo -->
+          <a class="navbar-brand" href="/">Bookers</a>
+          
+          <!-- Toggle button for mobile view -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <!-- Navbar links -->
+          
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto">
+                <% if user_signed_in? %>
+                  <li class="nav-item">
+                      <%= link_to 'Home', user_path(current_user.id) %>
+                  </li>
+                  <li class="nav-item">
+                      <%= link_to 'Users', users_path %>
+                  </li>
+                  <li class="nav-item">
+                      <%= link_to 'Books', books_path  %>
+                  </li>
+                      <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+                  <li class="nav-item">
+                      
+                  </li>
+              </ul>
+          </div>
+      </div>
+          <% else %>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                      <%= link_to "Home", root_path %>
+                  </li>
+                  <li class="nav-item">
+                      <%= link_to "About", about_path %>
+                  </li>
+                  <li class="nav-item">
+                      <%= link_to "Sign up", new_user_registration_path %>
+                  </li>
+                      <%= link_to "Log in", new_user_session_path %>
+                  <li class="nav-item">
+                      
+                  </li>
+                  <% end %>
+              </ul>
+          </div>
+      </div>
+  </nav>
   </header>
     <%= yield %>
 
